@@ -3,7 +3,11 @@ Remove class+method decorators for testing, but keep them in your code!
 
 Decorators are quite popular and are finally on their way to being here to stay: https://github.com/tc39/proposal-decorators#69
 
-However there seem to as of yet be no good ways to access the underlying decorated classes/methods for unit tests.
+However there seem to as of yet be no good ways to access the underlying decorated classes/methods for unit tests.  All sources seem to suggest getting rid of our lovely decorators!
+
+https://hackernoon.com/unit-testing-redux-connected-components-692fa3c4441c
+https://stackoverflow.com/questions/37798741/nested-components-testing-with-enzyme-inside-of-react-redux
+https://hacks.mozilla.org/2018/04/testing-strategies-for-react-and-redux/
 
 This package attempts to address this issue by automatically exporting a copy (not a reference) to the underlying classes+methods (see below).
 
