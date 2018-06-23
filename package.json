@@ -1,0 +1,22 @@
+{
+  "name": "babel-undecorate-plugin",
+  "author": "Roger Beaman <rwcbeaman@gmail.com> (http://github.com/sirrodgepodge)",
+  "license": "MIT",
+  "version": "0.0.1",
+  "description": "remove class+method decorators for testing, but keep them in your code!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirrodgepodge/babel-undecorate-plugin.git"
+  },
+  "keywords": [
+    "decorators",
+    "test",
+    "redux",
+    "connect"
+  ],
+  "bugs": {
+    "url": "https://github.com/sirrodgepodge/babel-undecorate-plugin/issues"
+  },
+  "homepage": "https://github.com/sirrodgepodge/babel-undecorate-plugin#readme"
+}
