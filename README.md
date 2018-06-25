@@ -1,4 +1,4 @@
-# babel-undecorate-plugin
+# babel-plugin-undecorate
 Remove class+method decorators for testing, but keep them in your code!
 
 Decorators are quite popular and are finally on their way to being here to stay: https://github.com/tc39/proposal-decorators#69
