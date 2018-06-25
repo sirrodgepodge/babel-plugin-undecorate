@@ -2,7 +2,7 @@
   "name": "babel-plugin-undecorate",
   "author": "Roger Beaman <rwcbeaman@gmail.com> (http://github.com/sirrodgepodge)",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "remove class+method decorators for testing, but keep them in your code!",
   "main": "index.js",
   "repository": {
