@@ -15,6 +15,10 @@ Can either copy all classes with decorators (with the decorators removed) or tar
 
 *Note that this package only looks for decorators on "Export" nodes at present (so if you were to assign a decorated class to a variable and export the variable it would not work).
 
+[![NPM][nodei-image]][nodei-url]
+[nodei-image]: https://nodei.co/npm/babel-plugin-undecorate.png?downloads=true&downloadRank=true&stars=true
+[nodei-url]: https://www.npmjs.com/package/babel-plugin-undecorate
+
 ## Example Usage
 
 ### .babelrc
