@@ -20,9 +20,12 @@ Can either copy all classes with decorators (with the decorators removed) or tar
 ### .babelrc
 ```js
 {
-  plugins: [["undecorate", {
-    specifically: ["anyOldClassDecorator", "anyOldMethodDecorator"]
-  }], ...]
+  plugins: [
+    ["undecorate", {
+      specifically: ["anyOldClassDecorator", "anyOldMethodDecorator"]
+    }],
+    "transform-decorators-legacy" // this must come after 'undecorate'
+  ]
 }
 ```
 
