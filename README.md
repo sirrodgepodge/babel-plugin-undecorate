@@ -13,7 +13,7 @@ This package attempts to address this issue by automatically exporting a copy (n
 
 Can either copy all classes with decorators (with the decorators removed) or target specific decorators.
 
-*Note that this package only looks for decorators on "Export" nodes at present (so if you were to assign a decorated class to a variable and export the variable it would not work).
+*Note that this package only looks for decorators on "Export" nodes at present (so if you were to assign a decorated class to a variable and export the variable it would not work).*
 
 [![NPM][nodei-image]][nodei-url]
 
@@ -22,12 +22,17 @@ Can either copy all classes with decorators (with the decorators removed) or tar
 ### .babelrc
 ```js
 {
-  plugins: [
-    ["undecorate", {
-      specifically: ["anyOldClassDecorator", "anyOldMethodDecorator"]
-    }],
-    "transform-decorators-legacy" // this must come after 'undecorate'
-  ]
+  "env": {
+    "test": { // babel overrides for specifically when process.env.NODE_ENV = "test"
+      "plugins": [
+        ["undecorate", {
+          "specifically": ["anyOldClassDecorator", "anyOldMethodDecorator"]
+        }],
+        "transform-decorators-legacy", // this must come after 'undecorate'
+        ... // ...other plugins
+      ]
+    }
+  }
 }
 ```
 
@@ -100,6 +105,6 @@ Allows only removing specific decorators (by name), if not passed in plugin will
 
 ### undecoratedPrefix <String> (default: "__undecorated__")
 The string which class exports that have been undecorated will be prepended with.
-  
+
 [nodei-image]: https://nodei.co/npm/babel-plugin-undecorate.png?downloads=true&downloadRank=true&stars=true
 [nodei-url]: https://www.npmjs.com/package/babel-plugin-undecorate
