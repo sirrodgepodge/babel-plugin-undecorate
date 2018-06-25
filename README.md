@@ -19,7 +19,7 @@ Can either copy all classes with decorators (with the decorators removed) or tar
 
 ## Example Usage
 
-### .babelrc
+#### .babelrc
 ```js
 {
   "env": {
@@ -36,7 +36,7 @@ Can either copy all classes with decorators (with the decorators removed) or tar
 }
 ```
 
-### sampleFile.js
+#### input
 ```js
 @anyOldClassDecorator
 export default class AnyOldClass {
