@@ -46,6 +46,9 @@ module.exports = function getUndecorateBabelPlugin({ types: t}) {
                   var clonedClassProperty = classProperty.__clone();
                   if (clonedClassProperty.decorators) {
                   	clonedClassProperty.decorators = clonedClassProperty.decorators.filter(filterOutDecorators);
+
+                    // need to clear if array is empty to avoid bug until this PR is merged: https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy/pull/80
+                    if (!clonedClassProperty.decorators.length) clonedClassProperty.decorators = null;
                   }
                   return clonedClassProperty;
                 }
@@ -55,11 +58,19 @@ module.exports = function getUndecorateBabelPlugin({ types: t}) {
                 var undecoratedPrefix = state.opts.undecoratedPrefix || '__undecorated__';
 
                 clonedClassNode.id = clonedClassNode.id.__clone();
-                clonedClassNode.id.name = undecoratedPrefix + clonedClassNode.id.name;
+                clonedClassNode.id.name = undecoratedPrefix + clonedClassNode.id.name; // prefix class name
 
                 var clonedExportNode = node.__clone();
-                clonedExportNode.type = 'ExportNamedDeclaration'; // need to do named export always, can't have two default exports
-                clonedExportNode.declaration = clonedClassNode;
+                clonedExportNode.declaration = clonedClassNode; // set export contents to class
+
+                // need to make cloned export a named export, can't have two default exports
+                // in order to do so need to set several properties that are on namedExports but not default exports
+                if (clonedExportNode.type === 'ExportDefaultDeclaration') {
+                  clonedExportNode.type = 'ExportNamedDeclaration';
+                  clonedExportNode.source = clonedExportNode.source || null;
+                  clonedExportNode.specifiers = clonedExportNode.specifiers || [];
+                  clonedExportNode.exportKind = clonedExportNode.exportKind || 'value';
+                }
 
               	output.push(clonedExportNode);
               }
